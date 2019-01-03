@@ -155,6 +155,7 @@ def make_wav(song,bpm=120,transpose=0,leg_stac=.9,boost=1.1,repeat=0,fn="out.wav
 			if a[q] < 0: a[q] = 0
 
 	def render2(a, b, vol, pos, knum, note):
+		print(a, b, vol, pos, knum, note)
 		l=waves2(a, b)
 		q=int(l[0]*l[1])
 		lf = log(a)
@@ -168,6 +169,7 @@ def make_wav(song,bpm=120,transpose=0,leg_stac=.9,boost=1.1,repeat=0,fn="out.wav
 			amp1 = 1. - (x2/snd_len)
 			amp2 = 1. - (4*x2/snd_len)
 			amp_3to6 = 1. - (.25*x2/snd_len)
+			print(x2,sina,sina14,amp1,amp2,amp_3to6)
 			zz(amp1)
 			zz(amp2)
 			zz(amp_3to6)
@@ -176,9 +178,9 @@ def make_wav(song,bpm=120,transpose=0,leg_stac=.9,boost=1.1,repeat=0,fn="out.wav
 	            	  + amp_3to6 * np.sin(sina+.89*amp_3to6*np.sin(sina))
 	           	   + amp_3to6 * np.sin(sina+.79*amp_3to6*np.sin(sina))
 		   	   )
-			new *= np.exp(-x2/decay[int(lf*100)]/44100.)
-			if cache_this[note] > 1:
-				note_cache[note] = new.copy()
+		# 	new *= np.exp(-x2/decay[int(lf*100)]/44100.)
+		# 	if cache_this[note] > 1:
+		# 		note_cache[note] = new.copy()
 		else:
 			new = note_cache[note].copy()
 		dec_ind = int(leg_stac*q)
@@ -257,11 +259,11 @@ if __name__ == '__main__':
 	print()
 
 	#make_wav((('c', 4), ('e', 4), ('g', 4), ('c5', 1)))
-	#make_wav(song1, fn = "pysynth_scale.wav")
-	make_wav((('c1', 1), ('r', 1),('c2', 1), ('r', 1),('c3', 1), ('r', 1), ('c4', 1), ('r', 1),('c5', 1), ('r', 1),('c6', 1), ('r', 1),('c7', 1), ('r', 1),('c8', 1), ('r', 1), ('r', 1), ('r', 1), ('c4', 1),('r', 1), ('c4*', 1), ('r', 1), ('r', 1), ('r', 1), ('c4', 16), ('r', 1), ('c4', 8), ('r', 1),('c4', 4), ('r', 1),('c4', 1), ('r', 1),('c4', 1), ('r', 1)), fn = "all_cs.wav")
+	make_wav(song1, fn = "pysynth_scale.wav")
+	# make_wav((('c1', 1), ('r', 1),('c2', 1), ('r', 1),('c3', 1), ('r', 1), ('c4', 1), ('r', 1),('c5', 1), ('r', 1),('c6', 1), ('r', 1),('c7', 1), ('r', 1),('c8', 1), ('r', 1), ('r', 1), ('r', 1), ('c4', 1),('r', 1), ('c4*', 1), ('r', 1), ('r', 1), ('r', 1), ('c4', 16), ('r', 1), ('c4', 8), ('r', 1),('c4', 4), ('r', 1),('c4', 1), ('r', 1),('c4', 1), ('r', 1)), fn = "all_cs.wav")
 
-	make_wav(song4_rh, bpm = 130, transpose = 1, boost = 1.15, repeat = 1, fn = "pysynth_bach_rh.wav")
-	make_wav(song4_lh, bpm = 130, transpose = 1, boost = 1.15, repeat = 1, fn = "pysynth_bach_lh.wav")
-	mix_files("pysynth_bach_rh.wav", "pysynth_bach_lh.wav", "pysynth_bach.wav")
+	# make_wav(song4_rh, bpm = 130, transpose = 1, boost = 1.15, repeat = 1, fn = "pysynth_bach_rh.wav")
+	# make_wav(song4_lh, bpm = 130, transpose = 1, boost = 1.15, repeat = 1, fn = "pysynth_bach_lh.wav")
+	# mix_files("pysynth_bach_rh.wav", "pysynth_bach_lh.wav", "pysynth_bach.wav")
 
 	make_wav(song3, bpm = 132/2, leg_stac = 0.9, boost = 1.1, fn = "pysynth_chopin.wav")
