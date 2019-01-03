@@ -60,6 +60,7 @@ from mixfiles import mix_files
 
 from math import sin
 from math import exp
+from math import pi
 
 
 def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav", silent=False):
@@ -146,10 +147,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			# # sp = sp + exp(-72/10)*sin(a*(1+9)*factor*x)
 
 			# factor = .0001
-			# factor = 1/b*10
-			# factor = 3.14
-			# factor = 1/b*10
-			factor = 1 / b * 6.28
+			factor = 1 / b * 2 * pi
 
 			sp = .5*sin(a * (1) * factor * x)
 			sp = sp + .5*sin(a * (1 + 1) * factor * x)
