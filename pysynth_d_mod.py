@@ -180,8 +180,10 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 					vol = 1.
 					note = x[0]
 				try:
+					print("note:",note)
 					a=pitchhz[note]
 				except:
+
 					a=pitchhz[note + '4']	# default to fourth octave
 				a = a * 2**transpose
 				if x[1] < 0:
