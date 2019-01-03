@@ -153,7 +153,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			sp = sp + .5*sin(a * (1 + 1) * factor * x)
 			sp = sp + .1*sin(a * (1 + 2) * factor * x)
 			sp = sp + .1*sin(a * (1 + 3) * factor * x)
-			# sp = sp * (1 + .4* sin(10*x))
+			sp = sp * (1 + .5* sin(0.001*x))
 
 			ow = ow + sixteenbit(.5 * vol * sp)
 		fill = max(int(ex_pos - curpos - q), 0)
