@@ -210,14 +210,17 @@ if __name__ == '__main__':
 	print("Creating Demo Songs... (this might take about a minute)")
 	print()
 
-	# SONG 1
-	make_wav(song1, fn = "pysynth_scale.wav")
+	# LOL1
+	make_wav(lol1, fn = "lol1.wav")
 
-	# SONG 2
-	make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
-
-	# SONG 3
-	make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
+	# # SONG 1
+	# make_wav(song1, fn = "pysynth_scale.wav")
+    #
+	# # SONG 2
+	# make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
+    #
+	# # SONG 3
+	# make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
 
 	# SONG 4
 	#   right hand part
