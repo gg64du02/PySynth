@@ -125,9 +125,13 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			# l[0] is the note
 			if(l[0] == note):
 				print('note',note)
-				number_harms = len(l[1])
-				for k in range(number_harms):
-					break
+				frequencies_note = l[1]
+				amplitudes_note = l[2]
+				print('frequencies_note',frequencies_note)
+				print('amplitudes_note',amplitudes_note)
+				# number_harms = len(l[1])
+				# for k in range(number_harms):
+				# 	break
 
 		for x in range(q):
 
