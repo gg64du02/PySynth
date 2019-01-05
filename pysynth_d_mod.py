@@ -84,7 +84,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 	def sixteenbit(x):
 		return struct.pack('h', round(32000*x))
 
-	def render2(a,b,vol):
+	def render2(a,b,vol,note):
 		print(a,b,vol)
 		b2 = (1. - pause) * b
 		l = waves2(a, b2)
@@ -94,6 +94,29 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		halfp = l[0] / 2.
 		sp = 0
 		fade = 1
+
+		notes = (
+			# 'a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'
+			('a',(),()),
+			('a#',(),()),
+
+			('b',(),()),
+
+			('c',(),()),
+			('c#',(),()),
+
+			('d',(),()),
+			('d#',(),()),
+
+			('e', (), ()),
+
+			('f', (), ()),
+			('f#', (), ()),
+			
+			('g', (), ()),
+			('g#', (), ()),
+
+		)
 
 		for x in range(q):
 
@@ -142,7 +165,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 				else:
 					b=length(x[1])
 				ex_pos = ex_pos + b
-				curpos = curpos + render2(a,b,vol)
+				curpos = curpos + render2(a,b,vol,note)
 
 			if x[0]=='r':
 				b=length(x[1])
