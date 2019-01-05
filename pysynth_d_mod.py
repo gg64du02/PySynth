@@ -96,55 +96,6 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		fade = 1
 
 		for x in range(q):
-			# if (x // halfp) % 2:
-			# 	osc = 1
-			# else:
-			# 	osc = -1
-			# if q - x < 100: fade = (q - x) / 100.
-			# sp += (osc - sp) / 10
-			# ow = ow + sixteenbit(.5 * fade * vol * sp)
-			# # flute:
-			# #975hz -9db (1)
-			# #1447 -43 (1+.5)
-			# #1979 -38 (1+1)
-			# #2314 -57 (1+1.5)
-			# #2969 -34 (1+2)
-			# #3958 -40 (1+3)
-			# #4900-5000 -46  (1+4)
-			# #6900 -56 (1+6)
-			# #7900 -63 (1+7)
-			# #8800 -62 (1+8)
-            #
-			# # sp = sin(a*x)
-            #
-			# sp = exp(-9/10)*sin(a*(1)*x)
-			# sp = sp + exp(-43/10)*sin(a*(1+.5)*x)
-			# sp = sp + exp(-38/10)*sin(a*(1+1)*x)
-			# sp = sp + exp(-57/10)*sin(a*(1+1.5)*x)
-			# sp = sp + exp(-34/10)*sin(a*(1+2)*x)
-			# sp = sp + exp(-40/10)*sin(a*(1+3)*x)
-			# sp = sp + exp(-46/10)*sin(a*(1+4)*x)
-			# sp = sp + exp(-56/10)*sin(a*(1+6)*x)
-			# sp = sp + exp(-63/10)*sin(a*(1+7)*x)
-			# sp = sp + exp(-62/10)*sin(a*(1+8)*x)
-
-			# # factor = .0001
-			# # factor = 1/b*10
-			# # factor = 3.14
-			# # factor = 1/b*10
-			# factor = 1/b*6.28
-            #
-			# sp = exp(-19/10)*sin(a*(1)*factor*x)
-			# sp = sp + exp(-43/10)*sin(a*(1+.5)*factor*x)
-			# sp = sp + exp(-30/10)*sin(a*(1+1)*factor*x)
-			# sp = sp + exp(-53/10)*sin(a*(1+1.5)*factor*x)
-			# sp = sp + exp(-36/10)*sin(a*(1+2)*factor*x)
-            # # #
-			# sp = sp + exp(-57/10)*sin(a*(1+2.5)*factor*x)
-			# sp = sp + exp(-37/10)*sin(a*(1+3)*factor*x)
-			# # sp = sp + exp(-50/10)*sin(a*(1+5)*factor*x)
-			# # sp = sp + exp(-72/10)*sin(a*(1+8)*factor*x)
-			# # sp = sp + exp(-72/10)*sin(a*(1+9)*factor*x)
 
 			# factor = .0001
 			factor = 1 / b * 2 * pi
