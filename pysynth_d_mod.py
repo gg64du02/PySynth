@@ -90,6 +90,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		l = waves2(a, b2)
 		ow = b''
 		q = int(l[0] * l[1])
+		print('q',q)
 
 		halfp = l[0] / 2.
 		sp = 0
@@ -97,7 +98,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 
 		notes = (
 			# 'a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'
-			('note',('frequencies'),('amplitude'),('phase'))
+			# ('note',('frequencies'),('amplitude'),('phase'))
 			('a',(886.658,1326.6,1772.5),(2150.2,171.1,35.6)),
 			('a#',(943.029,1886.2,2829.1),(2893.2,230.8,90)),
 
@@ -118,6 +119,15 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			('g#', (833.219,1666.3,2489.6), (1328.3,501.3,38.6)),
 
 		)
+
+		for l in notes:
+			print('l',l)
+			# l[0] is the note
+			if(l[0] == note):
+				print('note',note)
+				number_harms = len(l[1])
+				for k in range(number_harms):
+					break
 
 		for x in range(q):
 
