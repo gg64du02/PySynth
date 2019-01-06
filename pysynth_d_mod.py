@@ -132,11 +132,21 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 				# number_harms = len(l[1])
 				# for k in range(number_harms):
 				# 	break
+				if(len(l[1])!=len(l[2])):
+					# something is wrong in spectrum
+					print("something is wrong in spectrum")
+					exit()
 
 		for x in range(q):
 
 			# factor = .0001
 			factor = 1 / b * 2 * pi
+
+			# sp = amplitudes_note[]
+
+			for a,f in zip(amplitudes_note,frequencies_note):
+				sp += a * sin( factor * f * x)
+
 
 			sp = .3*sin(a * (1) * factor * x)
 			sp = sp + (.3/4)*sin(a * (1 + 1) * factor * x)
@@ -148,6 +158,22 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		fill = max(int(ex_pos - curpos - q), 0)
 		f.writeframesraw((ow) + (sixteenbit(0) * fill))
 		return q + fill
+
+		# for x in range(q):
+        #
+		# 	# factor = .0001
+		# 	factor = 1 / b * 2 * pi
+        #
+		# 	sp = .3*sin(a * (1) * factor * x)
+		# 	sp = sp + (.3/4)*sin(a * (1 + 1) * factor * x)
+		# 	# sp = sp + .3*sin(a * (1 + 2) * factor * x)
+		# 	# sp = sp + .1*sin(a * (1 + 3) * factor * x)
+		# 	# sp = sp * (1 + .1* sin(0.001*x))
+        #
+		# 	ow = ow + sixteenbit(.5 * vol * sp)
+		# fill = max(int(ex_pos - curpos - q), 0)
+		# f.writeframesraw((ow) + (sixteenbit(0) * fill))
+		# return q + fill
 
 	##########################################################################
 	# Write to output file (in WAV format)
