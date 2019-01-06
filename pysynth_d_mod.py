@@ -144,8 +144,8 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# sp = amplitudes_note[]
 
 						for a,g in zip(amplitudes_note,frequencies_note):
-							sp += a * sin( factor * g * x)
-							print('lol2')
+							sp += 0.0001* a * sin( factor * g * x)
+							# print('lol2')
 
 						# sp = .3 * sin(a * (1) * factor * x)
 						# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
@@ -154,7 +154,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# sp = sp * (1 + .1* sin(0.001*x))
 
 						ow = ow + sixteenbit(.5 * vol * sp)
-						print('lol1')
+						# print('lol1')
 					fill = max(int(ex_pos - curpos - q), 0)
 					f.writeframesraw((ow) + (sixteenbit(0) * fill))
 					return q + fill
