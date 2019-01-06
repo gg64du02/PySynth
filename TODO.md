@@ -1,4 +1,7 @@
 
+Check https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.signal.sawtooth.html
+https://www.soundonsound.com/techniques/practical-flute-synthesis
+
 Look for flute synth synthesis in specialized audio software
 
 fix the offset bug (between loops ?) ()
