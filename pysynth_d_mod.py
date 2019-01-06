@@ -129,8 +129,10 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 				print('note',note)
 				frequencies_note = l[1]
 				amplitudes_note = l[2]
+				phases_note = l[3]
 				print('frequencies_note',frequencies_note)
 				print('amplitudes_note',amplitudes_note)
+				print('phases_note',phases_note)
 				# number_harms = len(l[1])
 				# for k in range(number_harms):
 				# 	break
@@ -148,10 +150,10 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 
 						# print('"proper note"')
 
-						for a,g in zip(amplitudes_note,frequencies_note):
+						for a,g,p in zip(amplitudes_note,frequencies_note,phases_note):
 							# sp += 0.0001* a * sin( factor * g * x)
 							# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
-							sp += 0.0001* a * sin( factor * g * x * .5 * .5)
+							sp += 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
 							# print('a,g:',a,g)
 							# print('x:',x)
 							# break
