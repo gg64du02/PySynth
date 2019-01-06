@@ -190,6 +190,30 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			fill = max(int(ex_pos - curpos - q), 0)
 			f.writeframesraw((ow) + (sixteenbit(0) * fill))
 
+		# for x in range(q):
+		# 	# print('lol3')
+		# 	# factor = .0001
+		# 	factor = 1 / b * 2 * pi
+        #
+		# 	# sp = amplitudes_note[]
+        #
+		# 	sp = .3 * sin(a * (1) * factor * x)
+		# 	sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+		# 	# # sp = sp + .3*sin(a * (1 + 2) * factor * x)
+		# 	# # sp = sp + .1*sin(a * (1 + 3) * factor * x)
+		# 	# # sp = sp * (1 + .1* sin(0.001*x))
+        #
+		# 	# sp = .3 * sin(a * (2)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4) * sin(a * (2+1)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4)*sin(a * (2+2)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4)*sin(a * (2+3)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4)*sin(a * (2+4)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4)*sin(a * (2+5)/2 * factor * x)
+		# 	# sp = sp + (.3 / 4)*sin(a * (2+6)/2 * factor * x)
+        #
+		# 	ow = ow + sixteenbit(.5 * vol * sp)
+		# fill = max(int(ex_pos - curpos - q), 0)
+		# f.writeframesraw((ow) + (sixteenbit(0) * fill))
 		return q + fill
 
 		# for x in range(q):
