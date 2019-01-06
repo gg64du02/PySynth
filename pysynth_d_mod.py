@@ -85,7 +85,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		return struct.pack('h', round(32000*x))
 
 	def render2(a,b,vol,note):
-		print(a,b,vol)
+		print('a,b,vol:',a,b,vol)
 		b2 = (1. - pause) * b
 		l = waves2(a, b2)
 		ow = b''
@@ -120,6 +120,8 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 
 		)
 
+		proper_note_usued = False
+
 		for l in notes:
 			print('l',l)
 			# l[0] is the note
@@ -137,14 +139,19 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 					print("something is wrong in spectrum")
 					exit()
 				else:
+					proper_note_usued = True
 					for x in range(q):
 						# factor = .0001
 						factor = 1 / b * 2 * pi
 
 						# sp = amplitudes_note[]
 
+						# print('"proper note"')
+
 						for a,g in zip(amplitudes_note,frequencies_note):
 							sp += 0.0001* a * sin( factor * g * x)
+
+							# print('sp',sp)
 							# print('lol2')
 
 						# sp = .3 * sin(a * (1) * factor * x)
@@ -153,33 +160,28 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# sp = sp + .1*sin(a * (1 + 3) * factor * x)
 						# sp = sp * (1 + .1* sin(0.001*x))
 
-						ow = ow + sixteenbit(.5 * vol * sp)
+						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
 					fill = max(int(ex_pos - curpos - q), 0)
 					f.writeframesraw((ow) + (sixteenbit(0) * fill))
 					return q + fill
-			else:
-				for x in range(q):
-					# print('lol3')
-					# factor = .0001
-					factor = 1 / b * 2 * pi
+		if(proper_note_usued ==False):
+			for x in range(q):
+				# print('lol3')
+				# factor = .0001
+				factor = 1 / b * 2 * pi
 
-					# sp = amplitudes_note[]
+				# sp = amplitudes_note[]
 
-					# for a,f in zip(amplitudes_note,frequencies_note):
-					# 	sp += a * sin( factor * f * x)
+				sp = .3 * sin(a * (1) * factor * x)
+				sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+				# sp = sp + .3*sin(a * (1 + 2) * factor * x)
+				# sp = sp + .1*sin(a * (1 + 3) * factor * x)
+				# sp = sp * (1 + .1* sin(0.001*x))
 
-					sp = .3 * sin(a * (1) * factor * x)
-					sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
-					# sp = sp + .3*sin(a * (1 + 2) * factor * x)
-					# sp = sp + .1*sin(a * (1 + 3) * factor * x)
-					# sp = sp * (1 + .1* sin(0.001*x))
-
-					ow = ow + sixteenbit(.5 * vol * sp)
-				fill = max(int(ex_pos - curpos - q), 0)
-				f.writeframesraw((ow) + (sixteenbit(0) * fill))
-			break
-
+				ow = ow + sixteenbit(.5 * vol * sp)
+			fill = max(int(ex_pos - curpos - q), 0)
+			f.writeframesraw((ow) + (sixteenbit(0) * fill))
 
 		return q + fill
 
