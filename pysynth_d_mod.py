@@ -136,27 +136,51 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 					# something is wrong in spectrum
 					print("something is wrong in spectrum")
 					exit()
+				else:
+					for x in range(q):
+						# factor = .0001
+						factor = 1 / b * 2 * pi
 
-		for x in range(q):
+						# sp = amplitudes_note[]
 
-			# factor = .0001
-			factor = 1 / b * 2 * pi
+						for a,g in zip(amplitudes_note,frequencies_note):
+							sp += a * sin( factor * g * x)
+							print('lol2')
 
-			# sp = amplitudes_note[]
+						# sp = .3 * sin(a * (1) * factor * x)
+						# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+						# sp = sp + .3*sin(a * (1 + 2) * factor * x)
+						# sp = sp + .1*sin(a * (1 + 3) * factor * x)
+						# sp = sp * (1 + .1* sin(0.001*x))
 
-			for a,f in zip(amplitudes_note,frequencies_note):
-				sp += a * sin( factor * f * x)
+						ow = ow + sixteenbit(.5 * vol * sp)
+						print('lol1')
+					fill = max(int(ex_pos - curpos - q), 0)
+					f.writeframesraw((ow) + (sixteenbit(0) * fill))
+					return q + fill
+			else:
+				for x in range(q):
+					# print('lol3')
+					# factor = .0001
+					factor = 1 / b * 2 * pi
+
+					# sp = amplitudes_note[]
+
+					# for a,f in zip(amplitudes_note,frequencies_note):
+					# 	sp += a * sin( factor * f * x)
+
+					sp = .3 * sin(a * (1) * factor * x)
+					sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+					# sp = sp + .3*sin(a * (1 + 2) * factor * x)
+					# sp = sp + .1*sin(a * (1 + 3) * factor * x)
+					# sp = sp * (1 + .1* sin(0.001*x))
+
+					ow = ow + sixteenbit(.5 * vol * sp)
+				fill = max(int(ex_pos - curpos - q), 0)
+				f.writeframesraw((ow) + (sixteenbit(0) * fill))
+			break
 
 
-			sp = .3*sin(a * (1) * factor * x)
-			sp = sp + (.3/4)*sin(a * (1 + 1) * factor * x)
-			# sp = sp + .3*sin(a * (1 + 2) * factor * x)
-			# sp = sp + .1*sin(a * (1 + 3) * factor * x)
-			# sp = sp * (1 + .1* sin(0.001*x))
-
-			ow = ow + sixteenbit(.5 * vol * sp)
-		fill = max(int(ex_pos - curpos - q), 0)
-		f.writeframesraw((ow) + (sixteenbit(0) * fill))
 		return q + fill
 
 		# for x in range(q):
