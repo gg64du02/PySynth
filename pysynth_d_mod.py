@@ -85,12 +85,12 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 		return struct.pack('h', round(32000*x))
 
 	def render2(a,b,vol,note):
-		print('a,b,vol:',a,b,vol)
+		print('a,b,vol,note:',a,b,vol,note)
 		b2 = (1. - pause) * b
 		l = waves2(a, b2)
 		ow = b''
 		q = int(l[0] * l[1])
-		print('q',q)
+		# print('q',q)
 
 		halfp = l[0] / 2.
 		sp = 0
@@ -130,9 +130,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 				frequencies_note = l[1]
 				amplitudes_note = l[2]
 				phases_note = l[3]
-				print('frequencies_note',frequencies_note)
-				print('amplitudes_note',amplitudes_note)
-				print('phases_note',phases_note)
+				# print('frequencies_note',frequencies_note)
+				# print('amplitudes_note',amplitudes_note)
+				# print('phases_note',phases_note)
 				# number_harms = len(l[1])
 				# for k in range(number_harms):
 				# 	break
@@ -146,7 +146,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# print("x",x)
 						# factor = .0001
 						# print("b",b)
-						print("a",a)
+						# print("a",a)
 						factor = 1 / b * 2 * pi
 
 						# sp = amplitudes_note[]
@@ -160,7 +160,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 							# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
 							# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
 							# sp += .5 * 0.0001* am * sin( factor * fr * x * .5 * .5 + 2 * pi * (ph) / 360)
-							sp += .5 * 0.0001* am * sin( factor * a * x + 2 * pi * (ph) / 360)
+							sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360)
 							# print('a,g:',a,g)
 							# print('x:',x)
 							# break
