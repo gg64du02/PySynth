@@ -157,6 +157,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# ('note',('frequencies'),('amplitude'),('phase'))
 						# for a,g,p in zip(amplitudes_note,frequencies_note,phases_note):
 
+						# todo:check this: https://www.audacity-forum.de/download/edgar/nyquist/nyquist-doc/manual/part5.html
 						for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
 							# print("fr,am,ph",fr,am,ph)
 							# sp += 0.0001* a * sin( factor * g * x)
