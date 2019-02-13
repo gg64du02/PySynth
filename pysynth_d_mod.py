@@ -158,19 +158,27 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# ('note',('frequencies'),('amplitude'),('phase'))
 						# for a,g,p in zip(amplitudes_note,frequencies_note,phases_note):
 
-						# # todo:check this: https://www.audacity-forum.de/download/edgar/nyquist/nyquist-doc/manual/part5.html
-						# for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
-						# 	# print("fr,am,ph",fr,am,ph)
-						# 	# sp += 0.0001* a * sin( factor * g * x)
-						# 	# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
-						# 	# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
-						# 	# sp += .5 * 0.0001* am * sin( factor * fr * x * .5 * .5 + 2 * pi * (ph) / 360)
-						# 	sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360) * (1+0.1*cos(x*5))
-						# 	# sp += .5 * 0.0001 * am * sin(factor * fr * x + 2 * pi * (ph) / 360)*0.2*(1+0.5*sin(factor * 5 * x ))
-						# 	# sp += .5 * 0.0001 * am * sin(factor * fr * x + (ph) / 360) * 0.2 * (
-						# 	# 			1 + 0.5 * sin(factor * 5 * x))
-						# 	# sp += .5 * 0.0001 * am * sin(factor * (fr+5) * x + 2 * pi * (ph) / 360)
-						sp += .5 * 0.0001 * 2000 * sin(factor * 440 * x + 2 * pi * (0) / 360) * (1 + 0.1 * cos(x * 5))
+						# todo:check this: https://www.audacity-forum.de/download/edgar/nyquist/nyquist-doc/manual/part5.html
+						for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
+							# print("fr,am,ph",fr,am,ph)
+							# sp += 0.0001* a * sin( factor * g * x)
+							sp = 0.01* a * sin( factor * fr * x * .5 * .5)
+							# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
+							# sp += .5 * 0.0001* am * sin( factor * fr * x * .5 * .5 + 2 * pi * (ph) / 360)
+							# sp += .5 * 0.0001* am * cos( factor * fr * x + 2 * pi * (ph) / 360) * (1+0.5*cos(x*5*5))
+							# sp += .5 * 0.0001* 2*am * sin( factor * fr * x + 2 * pi * (ph) / 360) * (1+0.5*cos(x*5*pi))
+							# sp += .5 * 0.0001 * 2 * am * sin(factor * fr * x + 2 * pi * (ph) / 360)
+							# sp += .5 * 0.0001 * 2 * am * sin( (1/ fr) * x + 2 * pi * (ph) / 360)
+							# sp += .5 * 0.0001* am * cos(2*pi*a*x + 2*pi*ph/360)
+							# sp += .5 * 0.00001* am * cos((1/a)*x + 2*pi*ph/360)
+							# sp += .5 * 0.0001 * am * sin(factor * fr * x + 2 * pi * (ph) / 360)*0.2*(1+0.5*sin(factor * 5 * x ))
+							# sp += .5 * 0.0001 * am * sin(factor * fr * x + (ph) / 360) * 0.2 * (
+							# 			1 + 0.5 * sin(factor * 5 * x))
+							# sp += .5 * 0.0001 * am * sin(factor * (fr+5) * x + 2 * pi * (ph) / 360)
+						# sp += .5 * 0.0001 * 2000 * sin(factor * 440 * x + 2 * pi * (0) / 360) * (1 + 0.1 * cos(x * 5))
+
+						# sp += .5 * 0.0001 * 200 * sin(1 / a * x + 2 * pi * (0) / 360) * (1 + 0.1 * cos(x * 5))
+						# sp += .5 * 0.0001 * 200 * sin((1 / a) * x + 2 * pi * (0) / 360)
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
