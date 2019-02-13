@@ -155,30 +155,31 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# 	# print("fr,am,ph",fr,am,ph)
 						# 	sp = 0.01*am*sin( factor * fr * x *2*pi)
 
-						sp = sin( (a * x ) / b )
+						# sp = sin( 6.28*(a * x ) / b )
+						sp = sin( pi*(a * x ) / b )
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
 					fill = max(int(ex_pos - curpos - q), 0)
 					f.writeframesraw((ow) + (sixteenbit(0) * fill))
 					return q + fill
-		if(proper_note_usued ==False):
-			print("if(proper_note_usued ==False):")
-			for x in range(q):
-				# print('lol3')
-				# factor = .0001
-				factor = 1 / b * 2 * pi
-				# sp = amplitudes_note[]
-				# sp = .3 * sin(a * (1) * factor * x)
-				# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
-				sp=0
-				# sp = sp + .3*sin(a * (1 + 2) * factor * x)
-				# sp = sp + .1*sin(a * (1 + 3) * factor * x)
-				# sp = sp * (1 + .1* sin(0.001*x))
-
-				ow = ow + sixteenbit(.5 * vol * sp)
-			fill = max(int(ex_pos - curpos - q), 0)
-			f.writeframesraw((ow) + (sixteenbit(0) * fill))
+		# if(proper_note_usued ==False):
+		# 	print("if(proper_note_usued ==False):")
+		# 	for x in range(q):
+		# 		# print('lol3')
+		# 		# factor = .0001
+		# 		factor = 1 / b * 2 * pi
+		# 		# sp = amplitudes_note[]
+		# 		# sp = .3 * sin(a * (1) * factor * x)
+		# 		# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+		# 		sp=0
+		# 		# sp = sp + .3*sin(a * (1 + 2) * factor * x)
+		# 		# sp = sp + .1*sin(a * (1 + 3) * factor * x)
+		# 		# sp = sp * (1 + .1* sin(0.001*x))
+        #
+		# 		ow = ow + sixteenbit(.5 * vol * sp)
+		# 	fill = max(int(ex_pos - curpos - q), 0)
+		# 	f.writeframesraw((ow) + (sixteenbit(0) * fill))
 
 		return q + fill
 
@@ -242,7 +243,7 @@ if __name__ == '__main__':
     #
 	# # SONG 2
 	# make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
-	make_wav(song5, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
+	make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_.wav")
     #
 	# # SONG 3
 	# make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
