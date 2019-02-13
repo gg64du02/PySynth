@@ -155,8 +155,8 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# 	# print("fr,am,ph",fr,am,ph)
 						# 	sp = 0.01*am*sin( factor * fr * x *2*pi)
 
-						# sp = sin( 6.28*(a * x ) / b )
-						sp = sin( pi*(a * x ) / b )
+						# designed ('a', 2) to get 440Hz
+						sp = sin( 2*pi*(a * x ) / b )
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
