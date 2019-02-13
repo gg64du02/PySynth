@@ -155,7 +155,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 
 						# ('note',('frequencies'),('amplitude'),('phase'))
 						# for a,g,p in zip(amplitudes_note,frequencies_note,phases_note):
+
 						for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
+							print("fr,am,ph",fr,am,ph)
 							# sp += 0.0001* a * sin( factor * g * x)
 							# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
 							# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
@@ -182,6 +184,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 					f.writeframesraw((ow) + (sixteenbit(0) * fill))
 					return q + fill
 		if(proper_note_usued ==False):
+			print("if(proper_note_usued ==False):")
 			for x in range(q):
 				# print('lol3')
 				# factor = .0001
@@ -300,7 +303,8 @@ if __name__ == '__main__':
 	# make_wav(song1, fn = "pysynth_scale.wav")
     #
 	# # SONG 2
-	make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
+	# make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
+	make_wav(song5, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
     #
 	# # SONG 3
 	# make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
