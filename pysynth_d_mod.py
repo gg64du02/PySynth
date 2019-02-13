@@ -58,7 +58,7 @@ pitchhz, keynum = getfreq(pr = True)
 import wave, math, struct
 from mixfiles import mix_files
 
-from math import sin
+from math import sin,cos
 from math import exp
 from math import pi
 
@@ -163,7 +163,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 							# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
 							# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
 							# sp += .5 * 0.0001* am * sin( factor * fr * x * .5 * .5 + 2 * pi * (ph) / 360)
-							sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360)
+							sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360) * (1+0.1*cos(x*5))
 							# sp += .5 * 0.0001 * am * sin(factor * fr * x + 2 * pi * (ph) / 360)*0.2*(1+0.5*sin(factor * 5 * x ))
 							# sp += .5 * 0.0001 * am * sin(factor * fr * x + (ph) / 360) * 0.2 * (
 							# 			1 + 0.5 * sin(factor * 5 * x))
@@ -195,8 +195,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 
 				# sp = amplitudes_note[]
 
-				sp = .3 * sin(a * (1) * factor * x)
-				sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+				# sp = .3 * sin(a * (1) * factor * x)
+				# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
+				sp=0
 				# sp = sp + .3*sin(a * (1 + 2) * factor * x)
 				# sp = sp + .1*sin(a * (1 + 3) * factor * x)
 				# sp = sp * (1 + .1* sin(0.001*x))
