@@ -169,18 +169,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 							# sp += .5 * 0.0001 * am * sin(factor * fr * x + (ph) / 360) * 0.2 * (
 							# 			1 + 0.5 * sin(factor * 5 * x))
 							# sp += .5 * 0.0001 * am * sin(factor * (fr+5) * x + 2 * pi * (ph) / 360)
-							# print('a,g:',a,g)
-							# print('x:',x)
-							# break
 
-							# print('sp',sp)
-							# print('lol2')
-
-						# sp = .3 * sin(a * (1) * factor * x)
-						# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
-						# sp = sp + .3*sin(a * (1 + 2) * factor * x)
-						# sp = sp + .1*sin(a * (1 + 3) * factor * x)
-						# sp = sp * (1 + .1* sin(0.001*x))
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
@@ -207,47 +196,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 			fill = max(int(ex_pos - curpos - q), 0)
 			f.writeframesraw((ow) + (sixteenbit(0) * fill))
 
-		# for x in range(q):
-		# 	# print('lol3')
-		# 	# factor = .0001
-		# 	factor = 1 / b * 2 * pi
-        #
-		# 	# sp = amplitudes_note[]
-        #
-		# 	sp = .3 * sin(a * (1) * factor * x)
-		# 	sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
-		# 	# # sp = sp + .3*sin(a * (1 + 2) * factor * x)
-		# 	# # sp = sp + .1*sin(a * (1 + 3) * factor * x)
-		# 	# # sp = sp * (1 + .1* sin(0.001*x))
-        #
-		# 	# sp = .3 * sin(a * (2)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4) * sin(a * (2+1)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4)*sin(a * (2+2)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4)*sin(a * (2+3)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4)*sin(a * (2+4)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4)*sin(a * (2+5)/2 * factor * x)
-		# 	# sp = sp + (.3 / 4)*sin(a * (2+6)/2 * factor * x)
-        #
-		# 	ow = ow + sixteenbit(.5 * vol * sp)
-		# fill = max(int(ex_pos - curpos - q), 0)
-		# f.writeframesraw((ow) + (sixteenbit(0) * fill))
 		return q + fill
-
-		# for x in range(q):
-        #
-		# 	# factor = .0001
-		# 	factor = 1 / b * 2 * pi
-        #
-		# 	sp = .3*sin(a * (1) * factor * x)
-		# 	sp = sp + (.3/4)*sin(a * (1 + 1) * factor * x)
-		# 	# sp = sp + .3*sin(a * (1 + 2) * factor * x)
-		# 	# sp = sp + .1*sin(a * (1 + 3) * factor * x)
-		# 	# sp = sp * (1 + .1* sin(0.001*x))
-        #
-		# 	ow = ow + sixteenbit(.5 * vol * sp)
-		# fill = max(int(ex_pos - curpos - q), 0)
-		# f.writeframesraw((ow) + (sixteenbit(0) * fill))
-		# return q + fill
 
 	##########################################################################
 	# Write to output file (in WAV format)
