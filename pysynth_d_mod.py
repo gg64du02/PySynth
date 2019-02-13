@@ -160,7 +160,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 							# sp = 0.0001* a * sin( factor * g * x * .5 * .5)
 							# sp += .5 * 0.0001* a * sin( factor * g * x * .5 * .5 + 2 * pi * p / 360)
 							# sp += .5 * 0.0001* am * sin( factor * fr * x * .5 * .5 + 2 * pi * (ph) / 360)
-							sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360)
+							# sp += .5 * 0.0001* am * sin( factor * fr * x + 2 * pi * (ph) / 360)
+							sp += .5 * 0.0001 * am * sin(factor * fr * x + 2 * pi * (ph) / 360)*0.2*(1+0.5*sin(factor * 5 * x ))
+							# sp += .5 * 0.0001 * am * sin(factor * (fr+5) * x + 2 * pi * (ph) / 360)
 							# print('a,g:',a,g)
 							# print('x:',x)
 							# break
