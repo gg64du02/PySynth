@@ -144,24 +144,18 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 					proper_note_usued = True
 					print("proper_note_usued = True")
 					for x in range(q):
-						# print("x",x)
-						# factor = .0001
-						# print("b",b)
-						# print("a",a)
-						# factor = 1 / b * 2 * pi
 						factor = 1 / b
-
 						# sp = amplitudes_note[]
-
 						# print('"proper note"')
-
 						# ('note',('frequencies'),('amplitude'),('phase'))
 						# for a,g,p in zip(amplitudes_note,frequencies_note,phases_note):
 
-						# todo:check this: https://www.audacity-forum.de/download/edgar/nyquist/nyquist-doc/manual/part5.html
-						for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
-							# print("fr,am,ph",fr,am,ph)
-							sp = 0.01*am*1.414*sin( factor * fr * x )
+						# # todo:check this: https://www.audacity-forum.de/download/edgar/nyquist/nyquist-doc/manual/part5.html
+						# for fr,am,ph in zip(frequencies_note,amplitudes_note,phases_note):
+						# 	# print("fr,am,ph",fr,am,ph)
+						# 	sp = 0.01*am*sin( factor * fr * x *2*pi)
+
+						sp = sin( (a * x ) / b )
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
@@ -174,9 +168,7 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 				# print('lol3')
 				# factor = .0001
 				factor = 1 / b * 2 * pi
-
 				# sp = amplitudes_note[]
-
 				# sp = .3 * sin(a * (1) * factor * x)
 				# sp = sp + (.3 / 4) * sin(a * (1 + 1) * factor * x)
 				sp=0
