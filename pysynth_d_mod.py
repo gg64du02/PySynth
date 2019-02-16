@@ -156,7 +156,42 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# 	sp = 0.01*am*sin( factor * fr * x *2*pi)
 
 						# designed ('a', 2) to get 440Hz
-						sp = sin( 2*pi*(a * x ) / b )
+						# sp = sin( 2*pi*(a * x ) / b )
+
+						# # fm
+						# sp = sin( (2*pi*(a * x ) +(1/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*sin( (2*pi*(a * x *2) +(1/1)*10*sin(2*pi*100*x))/ b )
+						# sp += sin( (2*pi*(a * x *3) +(1/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*sin( (2*pi*(a * x *4) +(1/1)*10*sin(2*pi*100*x))/ b )
+						# sp += sin( (2*pi*(a * x *5) +(1/1)*10*sin(2*pi*100*x))/ b )
+
+						# # fm
+						# sp = sin( (2*pi*(a * x ) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*sin( (2*pi*(a * x *2) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += sin( (2*pi*(a * x *3) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*sin( (2*pi*(a * x *4) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += sin( (2*pi*(a * x *5) +(10/1)*10*sin(2*pi*100*x))/ b )
+
+						# # fm
+						# sp = sin( (2*pi*(a * x ) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.5*sin( (2*pi*(a * x *2) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.8*sin( (2*pi*(a * x *3) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.5*.5*sin( (2*pi*(a * x *4) +(10/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(10/1)*10*sin(2*pi*100*x))/ b )
+
+						# # fm
+						# sp = sin( (2*pi*(a * x ) +(100/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.5*.5*sin( (2*pi*(a * x *2) +(100/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.8*sin( (2*pi*(a * x *3) +(100/1)*100*sin(2*pi*100*x))/ b )
+						# sp += .5*.5*.5*.5*sin( (2*pi*(a * x *4) +(100/1)*10*sin(2*pi*100*x))/ b )
+						# sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(100/1)*10*sin(2*pi*100*x))/ b )
+
+						# fm
+						sp = sin( (2*pi*(a * x ) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						sp += .5*.5*.5*sin( (2*pi*(a * x *2) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						sp += .5*.8*sin( (2*pi*(a * x *3) +(100/1)*100*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						sp += .5*.5*.5*.5*sin( (2*pi*(a * x *4) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
