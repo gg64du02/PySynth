@@ -286,10 +286,12 @@ if __name__ == '__main__':
     #
 	# # SONG 2
 	# make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
-	print("here")
-	amplitudes = [random.randint(1,12) for i in range(7)]
-	print("amplitudes",amplitudes)
-	make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_"+str(amplitudes)+".wav")
+	number_of_gen = 50
+	for lazy_me in range(number_of_gen):
+		print("here")
+		amplitudes = [random.randint(1,12) for i in range(7)]
+		print("amplitudes",amplitudes)
+		make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_"+str(amplitudes)+".wav")
     #
 	# # SONG 3
 	# make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
