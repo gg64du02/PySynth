@@ -291,9 +291,10 @@ if __name__ == '__main__':
 	# for lazy_me in range(number_of_gen):
 	# 	print("here")
 	# 	amplitudes = [random.randint(1,5) for i in range(3)]
-	amplitudes = [1,5,3]
+	# amplitudes = [1,5,3]
+	amplitudes = [1,5,3,6,4]
 	print("amplitudes",amplitudes)
-	make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_"+str(amplitudes)+".wav")
+	make_wav(song5, bpm = 120, boost = 1, fn = "flute_toy_"+str(amplitudes)+".wav")
     #
 	# # SONG 3
 	# make_wav(song3, bpm = 132/2, pause = 0., boost = 1.1, fn = "pysynth_chopin.wav")
