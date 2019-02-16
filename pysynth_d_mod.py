@@ -31,6 +31,7 @@
 from __future__ import division
 from demosongs import *
 from mkfreq import getfreq
+import random
 
 pitchhz, keynum = getfreq(pr = True)
 
@@ -186,12 +187,17 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						# sp += .5*.5*.5*.5*sin( (2*pi*(a * x *4) +(100/1)*10*sin(2*pi*100*x))/ b )
 						# sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(100/1)*10*sin(2*pi*100*x))/ b )
 
-						# fm
-						sp = sin( (2*pi*(a * x ) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
-						sp += .5*.5*.5*sin( (2*pi*(a * x *2) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
-						sp += .5*.8*sin( (2*pi*(a * x *3) +(100/1)*100*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
-						sp += .5*.5*.5*.5*sin( (2*pi*(a * x *4) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
-						sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						# # fm
+						# sp = sin( (2*pi*(a * x ) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						# sp += .5*.5*.5*sin( (2*pi*(a * x *2) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						# sp += .5*.8*sin( (2*pi*(a * x *3) +(100/1)*100*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						# sp += .5*.5*.5*.5*sin( (2*pi*(a * x *4) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+						# sp += .5*.8*.8*.5*sin( (2*pi*(a * x *5) +(100/1)*10*sin(2*pi*100*x))/ b ) * sin((100*x)/b)
+
+						sp = 0
+						for am in amplitudes:
+							sp += (0.5**am)*sin( (2*pi*(a * x ) )/ b)
+						sp = 0.5*sp
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
@@ -278,6 +284,9 @@ if __name__ == '__main__':
     #
 	# # SONG 2
 	# make_wav(song2, bpm = 95, boost = 1.2, fn = "pysynth_anthem.wav")
+	print("here")
+	amplitudes = [random.randint(1,12) for i in range(7)]
+	print("amplitudes",amplitudes)
 	make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_.wav")
     #
 	# # SONG 3
