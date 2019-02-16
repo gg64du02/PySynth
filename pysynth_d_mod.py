@@ -197,9 +197,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						sp = 0
 						harm_nu = 0
 						for am in amplitudes:
-							sp += (0.5**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b)
+							sp += (0.707**am)*sin( (2*pi*(a *(1+2*harm_nu)* x ) )/ b)
 							harm_nu +=1
-						sp = 0.5*sp
+						sp = 1*sp
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
@@ -289,7 +289,7 @@ if __name__ == '__main__':
 	number_of_gen = 50
 	for lazy_me in range(number_of_gen):
 		print("here")
-		amplitudes = [random.randint(1,12) for i in range(7)]
+		amplitudes = [random.randint(1,5) for i in range(3)]
 		print("amplitudes",amplitudes)
 		make_wav(song5, bpm = 120, boost = 1, fn = "pysynth_anthem_"+str(amplitudes)+".wav")
     #
