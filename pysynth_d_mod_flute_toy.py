@@ -199,13 +199,21 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						for am in amplitudes:
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b))
-							sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b)) * (1+.1*sin( (2*pi*(49)*x/b)))
+							if(x>.8*q):
+								end_new = exp((q-x)/b)
+								print("end_new"+str(end_new))
+							else:
+								end_new = 0
+							end_new = exp((q-x)/b)
+							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b)) * (1+.1*sin( (2*pi*(49)*x/b)))
+							sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b)) * (1+.1*sin( (2*pi*(49)*x/b))) * (1-end_new)
 
 							# sp += (0.707 ** am) * sin((2 * pi * (a * 1 / (3 ** harm_nu) * (1 + harm_nu) * x)) / b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+2*harm_nu)* x ) )/ b) * sin(2*pi*40.5*x/b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * sin(2*pi*40.5*(1+harm_nu/4)*x/b)
 							harm_nu +=1
 						# sp += (0.707**3)*sin( (2*pi*(2605 *(1)* x ) )/ b)
+						sp *= 4
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
