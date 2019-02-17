@@ -198,11 +198,12 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						harm_nu = 0
 						for am in amplitudes:
 							sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b)
+
+							# sp += (0.707 ** am) * sin((2 * pi * (a * 1 / (3 ** harm_nu) * (1 + harm_nu) * x)) / b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+2*harm_nu)* x ) )/ b) * sin(2*pi*40.5*x/b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * sin(2*pi*40.5*(1+harm_nu/4)*x/b)
 							harm_nu +=1
-						# sp = 1*sp
-						sp += (0.707**5)*sin( (2*pi*(49 *(1+harm_nu)* x ) )/ b)
+						# sp += (0.707**3)*sin( (2*pi*(2605 *(1)* x ) )/ b)
 
 						ow = ow + sixteenbit(.1 * vol * sp)
 						# print('lol1')
@@ -308,7 +309,8 @@ if __name__ == '__main__':
 	# -83.2
 	# -87.2
 	# amplitudes = [1,7,13,14,15,16,15,17,19,18,18]
-	amplitudes = [1,5,11,12,13,14,13,15,17,16,16]
+	# amplitudes = [1,5,11,12,13,14,13,15,17,16,16]
+	amplitudes = [1,5,11,12]
 	print("amplitudes",amplitudes)
 	make_wav(song5, bpm = 120, boost = 1, fn = "flute_toy_"+str(amplitudes)+".wav")
     #
