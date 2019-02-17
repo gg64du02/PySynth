@@ -197,7 +197,9 @@ def make_wav(song,bpm=120,transpose=0,pause=.05,boost=1.1,repeat=0,fn="out.wav",
 						sp = 0
 						harm_nu = 0
 						for am in amplitudes:
-							sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b)
+							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b)
+							# sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b))
+							sp += (0.707**am)*sin( (2*pi*(a *(1+harm_nu)* x ) )/ b) * (1-exp(-x/b)) * (1+.1*sin( (2*pi*(5)*x/b)))
 
 							# sp += (0.707 ** am) * sin((2 * pi * (a * 1 / (3 ** harm_nu) * (1 + harm_nu) * x)) / b)
 							# sp += (0.707**am)*sin( (2*pi*(a *(1+2*harm_nu)* x ) )/ b) * sin(2*pi*40.5*x/b)
