@@ -17,3 +17,12 @@ generate with 1/1.5 frequencies?
 
 
 DONE: include phases from the paper
+
+
+ALWAYS BEFORE LISTENING:
+-check a third party sound equilizer on your computer
+-check if you harware is capable of all the frequance spectum
+(Sound card AND headphones/speaker)
+-check for spectrum analysis such as in Audacity
+
+-You should favorise headphones over speakers
